@@ -1,7 +1,7 @@
 # Read Me First
-This is an example of kafka consumer. Multiple consumers grouped together will create a fail-over:
+This is an example of kafka consumer. Multiple consumers are grouped together through groupId will create a fail-over
 
-* This application can be run in paralel and the port is adjusted in the application.properties.
+* This application can be run in paralel and the port need to be adjusted in the application.properties to avoid conflict.
 
 # Getting Started
 
