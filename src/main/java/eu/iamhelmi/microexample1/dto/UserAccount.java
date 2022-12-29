@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class UserAccount implements Serializable{
+	String userAccountUUID;
 	String login;
 	String pin;
 	String password;
@@ -43,6 +44,13 @@ public class UserAccount implements Serializable{
 	public void setOrganizationUUID(String organizationUUID) {
 		this.organizationUUID = organizationUUID;
 	}
+	public String getUserAccountUUID() {
+		return userAccountUUID;
+	}
+	public void setUserAccountUUID(String userAccountUUID) {
+		this.userAccountUUID = userAccountUUID;
+	}
+	
 	
 	
 }
