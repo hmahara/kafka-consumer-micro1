@@ -1,5 +1,6 @@
 package eu.iamhelmi.microexample1.configuration;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.PartitionOffset;
@@ -16,6 +17,10 @@ import lombok.extern.slf4j.Slf4j;
 @ConditionalOnProperty("kafka.enabled")
 @Component
 public class KafkaUserAccountMessageConsumer {
+	
+	 @Value(value = "${kafka.topic.useraccount-create.group-id}")
+	 private String groupId;
+
 
 	@KafkaListener(groupId = "${kafka.topic.useraccount-create.group-id}",
 			// topicPartitions = @TopicPartition(
@@ -27,7 +32,7 @@ public class KafkaUserAccountMessageConsumer {
 	// )
 	)
 	void onMessageUserAccountCreated(@Payload String message, ConsumerRecordMetadata meta) {
-		log.info("UserAccount is created.  [{}] from offset-{} and partition {}", message, meta.offset(), meta.partition());
+		log.info("<< Consumer {} >> - UserAccount is created.  [{}] from offset-{} and partition {}", groupId, message, meta.offset(), meta.partition());
 
 	}
 	
